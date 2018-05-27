@@ -18,6 +18,7 @@ public class XiJunit {
  private String username;
  
  @Before
+
  public void setUp() throws Exception {
   Job job1=new Job("COCS2028","Tutor","201802","201812","Fri1600",5,1200);
   Job job2=new Job("COCS2029","Lab","201802","201812","Fri1600",5,1200);
