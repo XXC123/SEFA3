@@ -1,0 +1,6 @@
+JS01021984,John,Smith,01/02/1984,5555-5555,john.smith@rmit.edu.au
+JD02031983,Jane,Doe,02/03/1983,6666-6666,jane.doe@rmit.edu.au
+LP04051993,Lily,Phillips,04/05/1993,7777-7777,lily.phillips@rmit.edu.au
+SD06081975,Samantha,Dawkins,06/08/1975,8888-8888,samantha.dawkins@rmit.edu.au
+GG04051978,Gary,George,04/05/1978,9999-9999,gary.george@rmit.edu.au
+aa,Hary,Bery,04/05/1978,9999-9999,hary.bery@rmit.edu.au
