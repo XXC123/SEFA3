@@ -487,24 +487,25 @@ public class HRApplication {
 		// to-do
 	}
 
-	public static void createCourseEvent() {
+	public static Boolean createCourseEvent() {
 		Scanner stdin = new Scanner(System.in);
 		String courseCode, name, start, end, time;
 		int numOfStaff;
 		double payRate;
 
+
 		// Gets user's input
 		System.out.println("Create a new job");
 		
 		System.out.print("Code of the course: ");
-		courseCode = stdin.next();
+		courseCode = stdin.next();	
 		System.out.print("Name of the job: ");
 		name = stdin.next();
-		System.out.print("Start date: ");
+		System.out.print("Start date (DD/MM/YY): ");
 		start = stdin.next();
-		System.out.print("End date: ");
+		System.out.print("End date (DD/MM/YY): ");
 		end = stdin.next();
-		System.out.print("Time: ");
+		System.out.print("Time (00:00-00:00): ");
 		time = stdin.next();
 		System.out.print("Number of staff: ");
 		numOfStaff = stdin.nextInt();
@@ -512,12 +513,38 @@ public class HRApplication {
 		// TO DO: show a list of payrates
 		System.out.print("Payrate: ");
 		payRate = stdin.nextDouble();
-
+		
+		if (checkJob(courseCode, name, start, end, time, numOfStaff, payRate) == false) {
+			return false;
+		}
+		
 		// Creates new job
 		Job j = new Job(courseCode, name, start, end, time, numOfStaff, payRate);
 		jobs.add(j);
 
 		System.out.println("Request created successfully.");
+		return true;
+	}
+
+	public static Boolean checkJob(String courseCode, String name, String start, String end, String time,
+			int numOfStaff, double payRate) {
+		String courseCodeRegex = "^[A-Z]{4}[0-9]{4}$";
+		String nameRegex = ".*";
+		String dateRegex = "^[0-9]{2}/[0-9]{2}/[0-9]{2}$";
+		String timePattern = "[0-9]{1,2}";
+		String timeRegex = "^" + timePattern + ":" + timePattern + "-" + timePattern + ":" + timePattern + "$";
+		
+		if (!courseCode.matches(courseCodeRegex) || 
+			!name.matches(nameRegex) || 
+			!start.matches(dateRegex) ||
+			!end.matches(dateRegex) ||
+			!time.matches(timeRegex) ||
+			numOfStaff <= 0 ||
+			payRate <= 0) {
+			System.out.println("Invalid input");
+			return false;
+		}
+		return true;
 	}
 
 	public static void staffForEvent() {
